@@ -55,18 +55,18 @@ describe FallbackAssets do
 
   end
 
-  describe "#fallback_javascript" do
+  describe "#load_javascript" do
     it "returns an javascript asset for default environment" do
-      expect(FallbackAssets.fallback_javascript(:jquery)).to eq "jquery.js"
+      expect(FallbackAssets.load_javascript(:jquery)).to eq "jquery.js"
     end
 
     it "returns an javascript asset for production environment" do
       stub_const "RAILS_ENV", "production"
-      expect(FallbackAssets.fallback_javascript(:jquery)).to eq "//cdn/jquery.min.js"
+      expect(FallbackAssets.load_javascript(:jquery)).to eq "//cdn/jquery.min.js"
     end
 
     it "returns false when trying to load a existing stylesheet in config file" do
-      expect(FallbackAssets.fallback_javascript(:normalize)).to be_false
+      expect(FallbackAssets.load_javascript(:normalize)).to be_false
     end
 
   end

@@ -34,7 +34,7 @@ module FallbackAssets
     [:javascripts, :stylesheets]
   end
 
-  def self.fallback_javascript(name)
+  def self.load_javascript(name)
     load(:javascripts, name)
   end
 
