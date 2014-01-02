@@ -1,17 +1,9 @@
 require "fallback_assets/version"
+require 'fallback_assets/javascripts_assets'
+require 'fallback_assets/stylesheets_assets'
 
 module FallbackAssets
-
-  module JavascriptsAssets
-    def self.javascript_include_fallback(file, fallback)
-      (RAILS_ENV != "production") ? fallback : file
-    end
-  end
-
-  module StylesheetsAssets
-    def self.stylesheet_include_fallback(file, fallback)
-      (RAILS_ENV != "production") ? fallback : file
-    end
-  end
+  include FallbackAssets::JavascriptsAssets
+  include FallbackAssets::StylesheetsAssets
 
 end
