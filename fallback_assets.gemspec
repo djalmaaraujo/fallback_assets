@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = FallbackAssets::VERSION
   spec.authors       = ["djalmaaraujo"]
   spec.email         = ["djalma.araujo@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{TODO: Easy to use helper to work with your assets}
+  spec.summary       = %q{TODO: Create fallbacks to your assets. Helpful to work with development and cdn assets.}
+  spec.homepage      = "https://github.com/djalmaaraujo/fallback_assets"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
