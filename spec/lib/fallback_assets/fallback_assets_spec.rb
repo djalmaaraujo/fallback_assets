@@ -87,4 +87,20 @@ describe FallbackAssets do
 
   end
 
+  describe "#fallback_stylesheet" do
+
+    it "returns an stylesheet link tag" do
+      expect(FallbackAssets.fallback_stylesheet(:normalize)).to eq "<link rel=\"stylesheet\" href=\"normalize.css\" />"
+    end
+
+  end
+
+  describe "#fallback_javascript" do
+
+    it "returns an script tag" do
+      expect(FallbackAssets.fallback_javascript(:jquery)).to eq "<script src=\"jquery.js\"></script>"
+    end
+
+  end
+
 end

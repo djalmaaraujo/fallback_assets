@@ -1,6 +1,6 @@
 require 'yaml'
 require "fallback_assets/version"
-# require "fallback_assets/html_asset"
+require "fallback_assets/html_asset"
 
 module FallbackAssets
   def self.load(type, name)
@@ -40,5 +40,17 @@ module FallbackAssets
 
   def self.load_stylesheet(name)
     load(:stylesheets, name)
+  end
+
+  def self.fallback_stylesheet(name)
+    asset = load_stylesheet(name)
+
+    FallbackAssets::HtmlAsset.new(asset).create_link
+  end
+
+  def self.fallback_javascript(name)
+    asset = load_javascript(name)
+
+    FallbackAssets::HtmlAsset.new(asset).create_script
   end
 end
