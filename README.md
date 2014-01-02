@@ -55,7 +55,17 @@ fallbacks:
     jquery:
       file: cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js
       fallback: vendor/assets/jquery.min.js
+
+environments:
+  file: production,staging,qa
+  fallback: development, test
 ```
+
+## TODO
+* Implement configuration file read
+* Implement a setting to determine which environments should use the first parameter and ignore development
+* Read from vendor/assets by default
+* Implement as railtie
 
 ## Copyright
 Copyright © 2014 Djalma Araújo. See LICENSE.txt for further details.
