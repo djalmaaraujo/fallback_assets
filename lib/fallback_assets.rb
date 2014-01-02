@@ -1,5 +1,6 @@
 require 'yaml'
 require "fallback_assets/version"
+# require "fallback_assets/html_asset"
 
 module FallbackAssets
   def self.load(type, name)
