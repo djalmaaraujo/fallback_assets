@@ -7,9 +7,14 @@ module FallbackAssets
   include FallbackAssets::JavascriptsAssets
   include FallbackAssets::StylesheetsAssets
 
-  def self.load_asset(type, asset)
+  def self.load_asset(type, name)
+    asset = {type: type.to_s, name: name.to_s}
+    asset_from_environment(asset) || asset_from_environment(asset, "development")
+  end
+
+  def self.asset_from_environment(asset, env = RAILS_ENV)
     config = settings
-    config["fallbacks"][type.to_s][asset.to_s][environment]
+    config["fallbacks"][asset[:type]][asset[:name]][env]
   end
 
   def self.settings

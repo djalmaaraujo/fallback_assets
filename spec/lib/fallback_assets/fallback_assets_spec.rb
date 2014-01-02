@@ -70,6 +70,11 @@ describe FallbackAssets do
         expect(FallbackAssets.load_asset(:javascripts, :jquery)).to eq "//cdn/jquery.min.js"
       end
 
+      it 'loads an asset from development if environment is crazy' do
+        stub_const "RAILS_ENV", "crazyenv"
+        expect(FallbackAssets.load_asset(:javascripts, :jquery)).to eq "jquery.js"
+      end
+
     end
 
   end
