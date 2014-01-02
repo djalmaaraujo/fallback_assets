@@ -56,3 +56,6 @@ fallbacks:
       file: cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js
       fallback: vendor/assets/jquery.min.js
 ```
+
+## Copyright
+Copyright © 2014 Djalma Araújo. See LICENSE.txt for further details.
