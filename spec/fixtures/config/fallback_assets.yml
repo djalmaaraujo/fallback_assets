@@ -1,0 +1,10 @@
+fallbacks:
+  stylesheets:
+    normalize:
+      production: //cdn/normalize.min.css
+      development: normalize.css
+
+  javascripts:
+    jquery:
+      production: //cdn/jquery.min.js
+      development: jquery.js

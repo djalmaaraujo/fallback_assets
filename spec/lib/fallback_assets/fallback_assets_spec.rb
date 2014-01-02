@@ -1,27 +1,26 @@
 require 'spec_helper'
+require 'yaml'
 
 describe FallbackAssets do
   specify { FallbackAssets.should be_a(Module) }
 
-  describe "Lib Version" do
+  let(:settings) { YAML.load_file("spec/fixtures/config/fallback_assets.yml") }
 
-    it "must have a valid version" do
-      expect(FallbackAssets::VERSION).to_not be_nil
-      expect(FallbackAssets::VERSION).to be_a_kind_of String
-    end
-
+  before(:each) do
+    stub_const "Rails", double(root: "spec/fixtures")
+    stub_const "RAILS_ENV", "development"
   end
 
   describe "FallbackAssets::JavascriptsAssets" do
     describe "#javascript_include_fallback" do
 
       it "returns a for production environment" do
-        RAILS_ENV = "production"
+        stub_const "RAILS_ENV", "production"
         expect(FallbackAssets::JavascriptsAssets.javascript_include_fallback("a", "b")).to eq "a"
       end
 
       it "returns b for environments different from production" do
-        RAILS_ENV = "development"
+        stub_const "RAILS_ENV", "development"
         expect(FallbackAssets::JavascriptsAssets.javascript_include_fallback("a", "b")).to eq "b"
       end
 
@@ -33,13 +32,42 @@ describe FallbackAssets do
     describe "#stylesheet_include_fallback" do
 
       it "returns a for production environment" do
-        RAILS_ENV = "production"
+        stub_const "RAILS_ENV", "production"
         expect(FallbackAssets::StylesheetsAssets.stylesheet_include_fallback("a", "b")).to eq "a"
       end
 
       it "returns b for environments different from production" do
-        RAILS_ENV = "development"
+        stub_const "RAILS_ENV", "development"
         expect(FallbackAssets::StylesheetsAssets.stylesheet_include_fallback("a", "b")).to eq "b"
+      end
+
+    end
+
+  end
+
+  describe "Configuration File" do
+    before do
+      YAML.stub(:load_file).with("#{Rails.root}/config/fallback_assets.yml").and_return(settings)
+    end
+
+    it "loads the configuration file into settings" do
+      expect(FallbackAssets.settings).to equal settings
+    end
+
+  end
+
+  describe "Asset loader" do
+
+    describe "#load_asset" do
+
+      it "loads an asset with different types" do
+        expect(FallbackAssets.load_asset(:javascripts, :jquery)).to eq "jquery.js"
+        expect(FallbackAssets.load_asset(:stylesheets, :normalize)).to eq "normalize.css"
+      end
+
+      it 'loads an asset from a different environment' do
+        stub_const "RAILS_ENV", "production"
+        expect(FallbackAssets.load_asset(:javascripts, :jquery)).to eq "//cdn/jquery.min.js"
       end
 
     end
