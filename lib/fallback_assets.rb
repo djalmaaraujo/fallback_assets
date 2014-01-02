@@ -1,12 +1,7 @@
 require 'yaml'
 require "fallback_assets/version"
-require 'fallback_assets/javascripts_assets'
-require 'fallback_assets/stylesheets_assets'
 
 module FallbackAssets
-  include FallbackAssets::JavascriptsAssets
-  include FallbackAssets::StylesheetsAssets
-
   def self.load(type, name)
     return false unless available_assets.include?(type)
     return false unless type.is_a?(Symbol)
@@ -38,4 +33,11 @@ module FallbackAssets
     [:javascripts, :stylesheets]
   end
 
+  def self.fallback_javascript(name)
+    load(:javascripts, name)
+  end
+
+  def self.fallback_stylesheet(name)
+    load(:stylesheets, name)
+  end
 end
