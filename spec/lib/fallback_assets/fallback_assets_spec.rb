@@ -71,7 +71,6 @@ describe FallbackAssets do
 
   end
 
-
   describe "#fallback_stylesheet" do
     it "returns an stylesheet asset for default environment" do
       expect(FallbackAssets.fallback_stylesheet(:normalize)).to eq "normalize.css"
@@ -87,4 +86,5 @@ describe FallbackAssets do
     end
 
   end
+
 end
