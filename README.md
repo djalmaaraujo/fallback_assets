@@ -25,13 +25,6 @@ gem 'fallback_assets'
 = fallback_stylesheet :normalize
 ```
 
-### Multiple
-
-```haml
-= fallback_javascript :underscore, :jquery, :normalize
-= fallback_stylesheet :normalize, :bootstrap
-```
-
 ### Configuration
 Create a file config/fallback_assets.yml under your rails app.
 
