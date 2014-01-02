@@ -15,16 +15,22 @@ Create fallbacks to your assets. Helpful to work with development and cdn assets
 = stylesheet_include_fallback "vendor/normalize.css", "//cdnjs/normalize.min.css"
 ```
 
+### Single use with YML config
+```haml
+= javascript_include_fallback :underscore
+= stylesheet_include_fallback :normalize
+```
+
 ### Multiple
 
-To use multiple fallbacks in the same command, you have to create a config/fallback_assets.yml, to use with symbols. This is the recommended syntax.
+To use multiple fallbacks in the same command, you have to create a config/fallback_assets.yml, to use with symbols.
 
 ```haml
 = javascript_include_fallback :underscore, :jquery, :normalize
 = stylesheet_include_fallback :normalize, :bootstrap
 ```
 
-### YML Example configuration
+### YML Example configuration (Recommended for better code organization)
 ```yaml
 
 fallbacks:
