@@ -1,16 +1,27 @@
 require 'spec_helper'
 
 describe "FallbackAssets::JavascriptsAssets" do
-  describe "#javascript_include_fallback" do
+  specify { FallbackAssets::JavascriptsAssets.should be_a(Module) }
 
-    it "returns a for production environment" do
-      stub_const "RAILS_ENV", "production"
-      expect(FallbackAssets::JavascriptsAssets.javascript_include_fallback("a", "b")).to eq "a"
+  let(:settings) { YAML.load_file("spec/fixtures/config/fallback_assets.yml") }
+
+  before(:each) do
+    stub_const "Rails", double(root: "spec/fixtures")
+    stub_const "RAILS_ENV", "development"
+  end
+
+  describe "#fallback_javascript" do
+    it "returns an javascript asset for default environment" do
+      expect(FallbackAssets::JavascriptsAssets.fallback_javascript(:jquery)).to eq "jquery.js"
     end
 
-    it "returns b for environments different from production" do
-      stub_const "RAILS_ENV", "development"
-      expect(FallbackAssets::JavascriptsAssets.javascript_include_fallback("a", "b")).to eq "b"
+    it "returns an javascript asset for production environment" do
+      stub_const "RAILS_ENV", "production"
+      expect(FallbackAssets::JavascriptsAssets.fallback_javascript(:jquery)).to eq "//cdn/jquery.min.js"
+    end
+
+    it "returns false when trying to load a existing stylesheet in config file" do
+      expect(FallbackAssets::JavascriptsAssets.fallback_javascript(:normalize)).to be_false
     end
 
   end

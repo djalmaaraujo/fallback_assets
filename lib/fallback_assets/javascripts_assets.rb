@@ -2,8 +2,14 @@ require 'fallback_assets'
 
 module FallbackAssets
   module JavascriptsAssets
-    def self.javascript_include_fallback(file, fallback)
-      (RAILS_ENV != "production") ? fallback : file
+
+    def self.fallback_javascript(name)
+      load_asset(:javascripts, name)
     end
+
+    def self.load_asset(type, name)
+      FallbackAssets.load_asset(type, name)
+    end
+
   end
 end
