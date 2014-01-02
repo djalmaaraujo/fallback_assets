@@ -3,7 +3,7 @@ Create fallbacks to your assets. Helpful to work with development and cdn assets
 
 ## Installation
 ```ruby
-gem install useragent
+gem install fallback_assets
 ```
 
 In your Gemfile:
