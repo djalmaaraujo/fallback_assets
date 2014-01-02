@@ -23,11 +23,11 @@ Create fallbacks to your assets. Helpful to work with development and cdn assets
 
 ### Multiple
 
-To use multiple fallbacks in the same command, you have to create a config/fallback_assets.yml, to use with symbols.
+To use multiple fallbacks in the same command, you have to create a config/fallback_assets.yml.
 
 ```haml
-= javascript_include_fallback :underscore, :jquery, :normalize
-= stylesheet_include_fallback :normalize, :bootstrap
+= javascript_include_fallback :underscore :jquery :normalize
+= stylesheet_include_fallback :normalize :bootstrap
 ```
 
 ### YML Example configuration (Recommended for better code organization)
