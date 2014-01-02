@@ -21,51 +21,35 @@ gem 'fallback_assets'
 
 ### Single use
 ```haml
-= javascript_include_fallback "underscore.js", "//cdnjs/underscore-min.js"
-= stylesheet_include_fallback "vendor/normalize.css", "//cdnjs/normalize.min.css"
-```
-
-### Single use with YML config
-```haml
-= javascript_include_fallback :underscore
-= stylesheet_include_fallback :normalize
+= fallback_javascript :underscore
+= fallback_stylesheet :normalize
 ```
 
 ### Multiple
 
-To use multiple fallbacks in the same command, you have to create a config/fallback_assets.yml.
-
 ```haml
-= javascript_include_fallback :underscore, :jquery, :normalize
-= stylesheet_include_fallback :normalize, :bootstrap
+= fallback_javascript :underscore, :jquery, :normalize
+= fallback_stylesheet :normalize, :bootstrap
 ```
 
-### YML Example configuration (Recommended for better code organization)
+### Configuration
+Create a file config/fallback_assets.yml under your rails app.
+
 ```yaml
-
-config/fallback_assets.yml
-
 fallbacks:
   stylesheets:
     normalize:
-      file: cdn.whatever.com/normalize.css
-      fallback: vendor/assets/stylesheets/normalize.css
+      production: //cdn/normalize.min.css
+      development: normalize.css
 
   javascripts:
     jquery:
-      file: cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js
-      fallback: vendor/assets/jquery.min.js
-
-environments:
-  file: production,staging,qa
-  fallback: development, test
+      production: //cdn/jquery.min.js
+      development: jquery.js
 ```
 
 ## TODO
-* Implement configuration file read
-* Implement a setting to determine which environments should use the first parameter and ignore development
 * Read from vendor/assets by default
-* Implement as railtie
 
 ## Copyright
 Copyright © 2014 Djalma Araújo. See LICENSE.txt for further details.
