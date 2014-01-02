@@ -1,6 +1,16 @@
 # Fallback Asset Gem (WIP)
 Create fallbacks to your assets. Helpful to work with development and cdn assets.
 
+## Installation
+```ruby
+gem install useragent
+```
+
+In your Gemfile:
+```ruby
+gem 'fallback_assets'
+```
+
 ## Features
 * Add assets (javascripts / stylesheets) to your codebase with fallback to local files
 * Great to use with CDN assets (first idea)
