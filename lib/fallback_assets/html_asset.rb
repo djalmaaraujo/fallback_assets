@@ -2,12 +2,16 @@ require "fallback_assets"
 
 module FallbackAssets
   class HtmlAsset
-    def create_script(asset)
-      "<script src=\"#{asset}\"></script>"
+    def initialize(asset)
+      @asset = asset
     end
 
-    def create_link(asset)
-      "<link rel=\"stylesheet\" href=\"#{asset}\" />"
+    def create_script
+      "<script src=\"#{@asset}\"></script>"
+    end
+
+    def create_link
+      "<link rel=\"stylesheet\" href=\"#{@asset}\" />"
     end
   end
 end
