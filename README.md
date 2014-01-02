@@ -33,6 +33,8 @@ To use multiple fallbacks in the same command, you have to create a config/fallb
 ### YML Example configuration (Recommended for better code organization)
 ```yaml
 
+config/fallback_assets.yml
+
 fallbacks:
   stylesheets:
     normalize:
