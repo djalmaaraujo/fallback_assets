@@ -1,13 +1,21 @@
 # Fallback Asset Gem (WIP)
-Create fallbacks to your assets. Handful to work with development and cdn assets.
+Create fallbacks to your assets. Helpful to work with development and cdn assets.
 
-## Single use
+## Features
+* Add assets (javascripts / stylesheets) to your codebase with fallback to local files
+* Great to use with CDN assets (first idea)
+* The local asset will be used if the CDN is not available
+* Easy to config
+
+## How to use
+
+### Single use
 ```haml
 = javascript_include_fallback "underscore.js", "//cdnjs/underscore-min.js"
 = stylesheet_include_fallback "vendor/normalize.css", "//cdnjs/normalize.min.css"
 ```
 
-## Multiple
+### Multiple
 
 To use multiple fallbacks in the same command, you have to create a config/fallback_assets.yml, to use with symbols. This is the recommended syntax.
 
@@ -16,8 +24,8 @@ To use multiple fallbacks in the same command, you have to create a config/fallb
 = stylesheet_include_fallback :normalize, :bootstrap
 ```
 
-## YML Example configuration
-```yml
+### YML Example configuration
+```yaml
 
 fallbacks:
   stylesheets:
