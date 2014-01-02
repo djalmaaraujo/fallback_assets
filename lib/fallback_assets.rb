@@ -7,7 +7,7 @@ module FallbackAssets
   include FallbackAssets::JavascriptsAssets
   include FallbackAssets::StylesheetsAssets
 
-  def self.load_asset(type, name)
+  def self.load(type, name)
     return false unless available_assets.include?(type)
     return false unless type.is_a?(Symbol)
     return false unless name.is_a?(Symbol)
