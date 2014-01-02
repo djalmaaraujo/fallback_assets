@@ -6,8 +6,8 @@ describe FallbackAssets do
   describe "Lib Version" do
 
     it "must have a valid version" do
-      FallbackAssets::VERSION.should_not be_nil
-      FallbackAssets::VERSION.should be_a_kind_of String
+      expect(FallbackAssets::VERSION).to_not be_nil
+      expect(FallbackAssets::VERSION).to be_a_kind_of String
     end
 
   end
