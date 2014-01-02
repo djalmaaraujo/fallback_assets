@@ -41,6 +41,16 @@ describe FallbackAssets do
         expect(FallbackAssets.load_asset(:javascripts, :jquery)).to eq "jquery.js"
       end
 
+      it 'returns false for a non-symbol type or name' do
+        expect(FallbackAssets.load_asset(false, false)).to be_false
+        expect(FallbackAssets.load_asset(:javascripts, false)).to be_false
+        expect(FallbackAssets.load_asset(false, :jquery)).to be_false
+      end
+
+      it 'returns false for a non valid asset type' do
+        expect(FallbackAssets.load_asset(:javascripts, :pretty)).to be_false
+      end
+
     end
 
   end
