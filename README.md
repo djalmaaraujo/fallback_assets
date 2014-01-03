@@ -1,5 +1,8 @@
-# Fallback Asset Gem
+# Fallback Asset Gem (v0.0.4)
 Create fallbacks to your assets. Helpful to work with development and cdn assets.
+
+[https://rubygems.org/gems/fallback_assets](https://rubygems.org/gems/fallback_assets)
+
 
 ## Installation
 In your Gemfile:
@@ -39,3 +42,4 @@ fallbacks:
 
 ## Copyright
 Copyright © 2014 Djalma Araújo. See LICENSE.txt for further details.
+
