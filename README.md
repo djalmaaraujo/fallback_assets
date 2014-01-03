@@ -1,11 +1,7 @@
-# Fallback Asset Gem (WIP)
+# Fallback Asset Gem
 Create fallbacks to your assets. Helpful to work with development and cdn assets.
 
 ## Installation
-```ruby
-gem install fallback_assets
-```
-
 In your Gemfile:
 ```ruby
 gem 'fallback_assets'
@@ -40,9 +36,6 @@ fallbacks:
       production: //cdn/jquery.min.js
       development: jquery.js
 ```
-
-## TODO
-* Read from vendor/assets by default
 
 ## Copyright
 Copyright © 2014 Djalma Araújo. See LICENSE.txt for further details.
