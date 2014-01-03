@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fallback_assets (0.0.4)
+    fallback_assets (0.0.5)
 
 GEM
   remote: https://rubygems.org/
