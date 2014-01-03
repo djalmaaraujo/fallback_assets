@@ -1,5 +1,4 @@
 language: ruby
-bundler_args: --local
 script: bundle exec rspec
 
 rvm:
