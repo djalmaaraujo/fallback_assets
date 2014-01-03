@@ -1,0 +1,6 @@
+language: ruby
+bundler_args: --local
+script: bundle exec rspec
+
+rvm:
+  - ruby-1.9.3p194
