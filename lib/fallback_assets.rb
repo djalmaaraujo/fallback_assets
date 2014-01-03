@@ -1,7 +1,7 @@
 require 'yaml'
 require "fallback_assets/version"
 require "fallback_assets/html_asset"
-require "fallback_assets/railtie"
+require "fallback_assets/railtie" if defined?(Rails)
 
 module FallbackAssets
   def self.load(type, name)
