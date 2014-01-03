@@ -15,7 +15,10 @@ describe FallbackAssets::Helper do
   describe "#fallback_stylesheet" do
 
     it "returns an stylesheet link tag" do
-      expect(fallback_stylesheet(:normalize)).to eq "<link rel=\"stylesheet\" href=\"normalize.css\" />"
+      normalize_return = "<link rel=\"stylesheet\" href=\"normalize.css\" />"
+      String.any_instance.stub(:html_safe).and_return normalize_return
+
+      expect(fallback_stylesheet(:normalize)).to eq normalize_return
     end
 
   end
@@ -23,7 +26,10 @@ describe FallbackAssets::Helper do
   describe "#fallback_javascript" do
 
     it "returns an script tag" do
-      expect(fallback_javascript(:jquery)).to eq "<script src=\"jquery.js\"></script>"
+      jquery_return = "<script src=\"jquery.js\"></script>"
+      String.any_instance.stub(:html_safe).and_return jquery_return
+
+      expect(fallback_javascript(:jquery)).to eq jquery_return
     end
 
   end
