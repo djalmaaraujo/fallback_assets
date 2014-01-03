@@ -8,7 +8,7 @@ describe FallbackAssets do
 
   before(:each) do
     stub_const "Rails", double(root: "spec/fixtures")
-    stub_const "RAILS_ENV", "development"
+    stub_const "ENV", {"RAILS_ENV" => "development"}
   end
 
   describe "Configuration File" do
@@ -32,7 +32,7 @@ describe FallbackAssets do
       end
 
       it 'loads an asset from a different environment' do
-        stub_const "RAILS_ENV", "production"
+        stub_const "ENV", {"RAILS_ENV" => "production"}
         expect(FallbackAssets.load(:javascripts, :jquery)).to eq "//cdn/jquery.min.js"
       end
 
@@ -61,7 +61,7 @@ describe FallbackAssets do
     end
 
     it "returns an javascript asset for production environment" do
-      stub_const "RAILS_ENV", "production"
+      stub_const "ENV", {"RAILS_ENV" => "production"}
       expect(FallbackAssets.load_javascript(:jquery)).to eq "//cdn/jquery.min.js"
     end
 
@@ -77,28 +77,12 @@ describe FallbackAssets do
     end
 
     it "returns an stylesheet asset for production environment" do
-      stub_const "RAILS_ENV", "production"
+      stub_const "ENV", {"RAILS_ENV" => "production"}
       expect(FallbackAssets.load_stylesheet(:normalize)).to eq "//cdn/normalize.min.css"
     end
 
     it "returns false when trying to load a existing javascript in config file" do
       expect(FallbackAssets.load_stylesheet(:jquery)).to be_false
-    end
-
-  end
-
-  describe "#fallback_stylesheet" do
-
-    it "returns an stylesheet link tag" do
-      expect(FallbackAssets.fallback_stylesheet(:normalize)).to eq "<link rel=\"stylesheet\" href=\"normalize.css\" />"
-    end
-
-  end
-
-  describe "#fallback_javascript" do
-
-    it "returns an script tag" do
-      expect(FallbackAssets.fallback_javascript(:jquery)).to eq "<script src=\"jquery.js\"></script>"
     end
 
   end

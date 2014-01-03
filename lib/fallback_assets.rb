@@ -1,6 +1,7 @@
 require 'yaml'
 require "fallback_assets/version"
 require "fallback_assets/html_asset"
+require "fallback_assets/railtie"
 
 module FallbackAssets
   def self.load(type, name)
@@ -12,8 +13,9 @@ module FallbackAssets
     asset_from_environment(asset) || asset_from_environment(asset, "development")
   end
 
-  def self.asset_from_environment(asset, env = RAILS_ENV)
+  def self.asset_from_environment(asset, env = false)
     config = settings
+    env = environment || "development"
 
     return false unless config["fallbacks"][asset[:type]]
     return false unless config["fallbacks"][asset[:type]][asset[:name]]
@@ -27,7 +29,7 @@ module FallbackAssets
   end
 
   def self.environment
-    RAILS_ENV
+    ENV['RAILS_ENV']
   end
 
   def self.available_assets
@@ -40,17 +42,5 @@ module FallbackAssets
 
   def self.load_stylesheet(name)
     load(:stylesheets, name)
-  end
-
-  def self.fallback_stylesheet(name)
-    asset = load_stylesheet(name)
-
-    FallbackAssets::HtmlAsset.new(asset).create_link
-  end
-
-  def self.fallback_javascript(name)
-    asset = load_javascript(name)
-
-    FallbackAssets::HtmlAsset.new(asset).create_script
   end
 end
