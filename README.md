@@ -1,4 +1,4 @@
-# Fallback Asset Gem (v0.0.4)
+# Fallback Asset Gem
 Create fallbacks to your assets. Helpful to work with development and cdn assets.
 
 [![Gem Version](https://badge.fury.io/rb/fallback_assets.png)](http://badge.fury.io/rb/fallback_assets) [![Build Status](https://travis-ci.org/djalmaaraujo/fallback_assets.png?branch=master)](https://travis-ci.org/djalmaaraujo/fallback_assets)
