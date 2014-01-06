@@ -31,12 +31,24 @@ fallbacks:
   stylesheets:
     normalize:
       production: //cdn/normalize.min.css
-      development: normalize.css
+      development: /assets/normalize.css
+      test: /assets/normalize.css
 
   javascripts:
     jquery:
       production: //cdn/jquery.min.js
-      development: jquery.js
+      development: /assets/jquery.js
+      test: /assets/jquery.js
+```
+
+### Tips-for-Troubleshooting
+If you are expecting errors while your tests are running, set the test environment like this:
+```yml
+...
+underscore:
+  development: /assets/underscore.js
+  production: //whatevercdn/underscore.min.js
+  test: /assets/underscore.js # this is important, to access a file from vendor/assets/javascripts, use: /assets
 ```
 
 ## Copyright
