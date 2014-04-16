@@ -51,6 +51,6 @@ underscore:
   test: /assets/underscore.js # this is important, to access a file from vendor/assets/javascripts, use: /assets
 ```
 
-## Copyright
-Copyright © 2014 Djalma Araújo. See LICENSE.txt for further details.
+## License
 
+[MIT License](http://djalmaaraujo.mit-license.org/) © Djalma Araújo
